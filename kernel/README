@@ -30,3 +30,6 @@ are included in the README file for each port.
 
 ---------------------------------------------------------------------------
 
+Additional files by Daniel A. Glasser <daniel.glasser@gmail.com>:
+ * atomgate.[ch]:  Additional synchronization mechanism that blocks threads as they encounter it when its flag value is not in their preferred state, then releases all threads waiting on that state when it the flag value is changed to their preferred state.  This was created to handle a modal configuration thread that blocks most other threads while it changes the operational configuration, then releases all of the blocked threads at once, allowing the scheduler to work out which ones get to run.  This was done so that the configuration data doesn't change mid-cycle. I implemented this because I neeeded it, but then realized that it was a generally useful construct, so I add it as an optional module within the atomthreads kernel.  See the comments in the files for how the gate is used.
+
